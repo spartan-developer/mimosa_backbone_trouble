@@ -1,12 +1,14 @@
-require
+requirejs.config
   urlArgs: "b=#{(new Date()).getTime()}"
   paths:
     jquery: 'vendor/jquery'
     underscore: 'vendor/underscore'
     backbone: 'vendor/backbone'
+    ckeditor: 'vendor/ckeditor/ckeditor'
   shim:
     backbone: ['jquery', 'underscore']
-  , ['app/example-view']
-  , (ExampleView) ->
-    view = new ExampleView()
-    view.render('body')
+    ckeditor:
+      exports: 'CKEDITOR'
+
+require ['app/views/home', 'backbone'], (HomeView) ->
+  new HomeView().render()
