@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+plugin  = ARGV[0]
+version = ARGV[1]
+
+zipUrl = "http://download.ckeditor.com/#{plugin}/releases/#{plugin}_#{version}.zip"
+puts zipUrl
+
+Dir.chdir "assets/javascripts/vendor/ckeditor/plugins" do
+  `curl #{zipUrl} | tar -xz`
+end
